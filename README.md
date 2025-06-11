@@ -11,7 +11,7 @@ College assigment.
 
 ![Website Screenshot](./frontend/public/website-screenshot.png)
 
-Responsive Design
+#### Responsive Design
 
 ![Responsive Website Screenshot](./frontend/public/responsive-website-screenshot.png)
 
