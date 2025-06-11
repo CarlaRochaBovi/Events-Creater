@@ -22,7 +22,7 @@ html {
 }
 
 h2 {
-  font-size: 32px;
+  font-size: 28px;
 }
 
 h3 {
@@ -169,6 +169,7 @@ form button {
 }
 
 .alert {
+  z-index: 1;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -215,6 +216,7 @@ form button {
 }
 
 .form-wrapper {
+  z-index: 0;
   position: absolute;
   top: 0;
   left: 0;
@@ -235,22 +237,25 @@ form button {
 .form-header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
   height: fit-content;
+  width: 100%;
+  max-width: 500px;
 
   gap: 16px;
+  margin-bottom: 24px;
 }
 
 form {
-  width: 500px;
+
+  width: 100%;
+  max-width: 500px;
   height: fit-content;
 
   display: flex;
   flex-direction: column;
   gap: 16px;
-
-  padding: 20px;
 
   border: 2px solid var(--primary-color);
   border-radius: 4px;
@@ -306,6 +311,7 @@ form button:hover {
 .event {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
 
@@ -321,14 +327,14 @@ form button:hover {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 100%;
+  max-width: 500px;
 }
 
 .truncate {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 300px;
+  max-width: 350px;
 }
 
 
@@ -364,7 +370,21 @@ form button:hover {
 }
 
 
+@media (max-width: 880px) {
+  .form-wrapper h2 {
+    font-size: 24px;
+  }
+  .btn-icon {
+    width: 30px;
+  }
+
+  .bg-details {
+    padding: 45px;
+  }
+}
+
 @media (max-width: 650px) {
+
   h1 {
     font-size: 26px;
   }

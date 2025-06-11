@@ -31,25 +31,29 @@ export function Form({closeForm, setAlertMessage, getEvents}: FormProps) {
   }
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+    try {
+      e.preventDefault();
 
-    const res = await fetch("http://localhost/backend/api.php", {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
+      const res = await fetch("http://localhost/backend/api.php", {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    await getEvents();
+      await getEvents();
 
-    const data = await res.json();
+      const data = await res.json();
 
-    setAlertMessage(data.message);
-    setTimeout(() => {
-      setAlertMessage(null);
-    }, 5500);
+      setAlertMessage(data.message);
+      setTimeout(() => {
+        setAlertMessage(null);
+      }, 5500);
 
-    setForm({ name: '', date: '', place: '', description: null });
-    closeForm();
+      setForm({ name: '', date: '', place: '', description: null });
+      closeForm();
+    }catch(err) {
+        setAlertMessage(`Erro ao criar o evento.  Erro: ${err}`);
+    }
   }
 
 
@@ -58,8 +62,8 @@ export function Form({closeForm, setAlertMessage, getEvents}: FormProps) {
 
       <div className="bg-details">
       <div className="form-header">
-        <h2>Digite a seguir as informações do evento.</h2>
-          <X size={40} className="btn-icon" onClick={closeForm} />
+        <h2>Formulário Do Evento</h2>
+          <X size={35} className="btn-icon" onClick={closeForm} />
       </div>
 
       <form onSubmit={handleSubmit}>
